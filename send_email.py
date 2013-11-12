@@ -5,6 +5,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from Parser9GAG import Parser9GAG
+
 # me == my email address
 # you == recipient's email address
 me = "guillem.hernandez@softonic.com"
@@ -18,17 +20,10 @@ msg['To'] = you
 
 # Create the body of the message (a plain-text and an HTML version).
 text = "Hi!\nHow are you?\nHere is the link you wanted:\nhttp://www.python.org"
-html = """\
-<html>
-  <head></head>
-  <body>
-    <p>Hi!<br>
-       How are you?<br>
-       Here is the <a href="http://www.python.org">link</a> you wanted.
-    </p>
-  </body>
-</html>
-"""
+header = """\<html> <head></head><body>"""
+center = Parser9GAG().FindLinksNoImage()
+footer ="""</p></body></html>"""
+html = header + center + footer
 
 # Record the MIME types of both parts - text/plain and text/html.
 part1 = MIMEText(text, 'plain')
