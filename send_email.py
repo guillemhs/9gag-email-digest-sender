@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import smtplib
-
+import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -9,21 +9,21 @@ from Parser9GAG import Parser9GAG
 
 # me == my email address
 # you == recipient's email address
-me = "guillem.hernandez@softonic.com"
-you = "guillem.hernandez.sola@gmail.com,guillem.hernandez+test_various_emails@gmail.com"
+me = "guillem.hernandez.sola@gmail.com"
+you = "guillem.hernandez@softonic.com"
 
 # Create message container - the correct MIME type is multipart/alternative.
 msg = MIMEMultipart('alternative')
-msg['Subject'] = "Link"
+msg['Subject'] = "Your " + (time.strftime("%d/%m/%Y")) + " daily 9GAG digest"
 msg['From'] = me
 msg['To'] = you
 
 # Create the body of the message (a plain-text and an HTML version).
-text = "Hi!\nHow are you?\nHere is the link you wanted:\nhttp://www.python.org"
-header = """\<html> <head></head><body>"""
+text = "Hi!<p>This a daily digest from 9gag<p>"
+header = """<html><head></head><body>"""
 center = Parser9GAG().FindLinksNoImage()
-footer ="""</p></body></html>"""
-html = header + center + footer
+footer ="""Brought to you by Guillem<p></p></body></html>"""
+html = header + text + center + footer
 
 # Record the MIME types of both parts - text/plain and text/html.
 part1 = MIMEText(text, 'plain')

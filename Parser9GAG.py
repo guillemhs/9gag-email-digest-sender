@@ -38,7 +38,6 @@ class Parser9GAG(object):
    				print "break!"
    				break
 	  		temp=str(number)+". "+link
-	  		print temp
 	  		os.system("echo %s|cat>>log" %temp)
 	  		ExtractImage(link)
 	  		number=number+1
@@ -59,7 +58,6 @@ class Parser9GAG(object):
    				print "break!"
    				break
 	  		temp=str(number)+". "+link
-			print "<a href=\""+ link +"\">"+ self.ExtractTitle(link) +"</a><p>"
 			s+="<a href=\""+ link +"\">"+ self.ExtractTitle(link) +"</a><p>"
   			number=number+1
 		return str(s)
