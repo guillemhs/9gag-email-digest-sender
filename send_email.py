@@ -9,8 +9,8 @@ from Parser9GAG import Parser9GAG
 
 # me == my email address
 # you == recipient's email address
-me = "Guillem Hernandez Sola <guillem.hernandez.sola@gmail.com>"
-you = "guillem.hernandez@softonic.com,daniel.macalister@softonic.com,pablo.blazquez@softonic.com"
+me = "User <user@gmail.com>"
+you = "you@gmail.com"
 
 # Create message container - the correct MIME type is multipart/alternative.
 msg = MIMEMultipart('alternative')

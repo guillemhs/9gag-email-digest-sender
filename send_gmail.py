@@ -7,8 +7,7 @@ from email.mime.text import MIMEText
 
 from Parser9GAG import Parser9GAG
 
-to = 'mail@mail.com'
-gmail_user = 'gmail_user@gmail.com'
+gmail_user = 'user@gmail.com'
 gmail_pwd = 'passwd'
 smtpserver = smtplib.SMTP("smtp.gmail.com",587)
 smtpserver.ehlo()
@@ -18,14 +17,14 @@ smtpserver.login(gmail_user, gmail_pwd)
 
 # me == my email address
 # you == recipient's email address
-me = "Guillem Hernandez Sola <guillem.hernandez.sola@gmail.com>"
-you = "guillem.hernandez@softonic.com"
+From = "User <user@gmail.com>"
+recipients = ['user1@gmail.com', 'user2@gmail.com', 'user3@gmail.com']
 
 # Create message container - the correct MIME type is multipart/alternative.
 msg = MIMEMultipart('alternative')
 msg['Subject'] = "Your " + (time.strftime("%d/%m/%Y")) + " daily 9GAG digest"
-msg['From'] = me
-msg['To'] = you
+msg['From'] = From
+msg['To'] = ", ".join(recipients)
 
 # Create the body of the message (a plain-text and an HTML version).
 text = "Hi!<p>This a daily digest from 9gag<p>"
@@ -46,6 +45,6 @@ msg.attach(part2)
 
 # sendmail function takes 3 arguments: sender's address, recipient's address
 # and message to send - here it is sent as one string.
-smtpserver.sendmail(me, you,  msg.as_string())
+smtpserver.sendmail(From, recipients,  msg.as_string())
 print 'done!'
 smtpserver.quit()
