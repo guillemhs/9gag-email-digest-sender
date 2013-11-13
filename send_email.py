@@ -9,7 +9,7 @@ from Parser9GAG import Parser9GAG
 
 # me == my email address
 # you == recipient's email address
-me = "guillem.hernandez.sola@gmail.com"
+me = "Guillem Hernandez Sola <guillem.hernandez.sola@gmail.com>"
 you = "guillem.hernandez@softonic.com"
 
 # Create message container - the correct MIME type is multipart/alternative.
